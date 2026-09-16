@@ -1095,8 +1095,8 @@ $('sheet').querySelector('.veil').onclick=close;
 addEventListener('keydown',e=>{if(e.key==='Escape')close();
   if((e.metaKey||e.ctrlKey)&&e.key==='z'){e.preventDefault();undo()}});
 
-/* lien entrant */
-(function(){
+/* lien entrant (au chargement ET si on ouvre un lien alors que l'app est deja ouverte) */
+function incoming(){
   const m=location.hash.match(/^#p=(.+)$/);if(!m)return;
   let p=null;try{const o=unpack(m[1]);p=(o&&(o.t==='p3'||o.t==='plan'))?o.p:o}catch(e){}
   history.replaceState(null,'',location.pathname);
@@ -1111,7 +1111,9 @@ addEventListener('keydown',e=>{if(e.key==='Escape')close();
     $('zNo').onclick=close;
     $('zOk').onclick=()=>{adopt(p);close();paint();toast('Version ajoutée')};
   },80);
-})();
+}
+incoming();
+addEventListener('hashchange',incoming);
 
 tab=S.tab||'plan';
 paint();
