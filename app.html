@@ -10,44 +10,38 @@
 <meta name="apple-mobile-web-app-title" content="Semaine">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
 <title>Semaine — Éloha &amp; Aël</title>
 <style>
 :root{
-  --papa:#2563eb; --papa-s:#eff5ff;
-  --maman:#db2777; --maman-s:#fdf2f8;
-  --duo:#7c3aed;  --duo-s:#f5f1ff;
-  --gaelle:#059669;--gaelle-s:#ecfdf5;
-  --grapho:#d97706;--grapho-s:#fffbeb;
-  --amie:#0891b2; --amie-s:#ecfeff;
-  --autre:#64748b; --autre-s:#f5f7fa;
-  --ink:#101318; --ink2:#41495a; --mut:#78829a;
-  --bg:#f4f5f8; --surf:#ffffff; --surf2:#fafbfd;
-  --line:#e4e7ee; --line2:#d3d8e3;
-  --ok:#059669; --warn:#c2410c;
-  --rad:14px; --rad-s:10px;
+  /* charte École Yoga Doula : orange #F8982B, corail #F2753B, turquoise #1DB8B8,
+     bleu-vert #478D9C, encre #1D5966, terre #894035 — police Raleway */
+  --papa:#1D5966;  --papa-s:#e2f1f4;
+  --maman:#F2753B; --maman-s:#ffece2;
+  --duo:#1DB8B8;   --duo-s:#daf8f8;
+  --gaelle:#7FA93B;--gaelle-s:#f0f7e2;
+  --mamie:#B0559B; --mamie-s:#fbe9f7;
+  --grapho:#F8982B;--grapho-s:#fff2df;
+  --amie:#478D9C;  --amie-s:#e7f3f6;
+  --autre:#8C8378; --autre-s:#f4f2ef;
+  --ink:#173238; --ink2:#365a64; --mut:#6b8289;
+  --bg:#fdf8f1; --surf:#ffffff; --surf2:#fffaf3;
+  --line:#efe1d1; --line2:#ddcab5;
+  --ok:#7FA93B; --warn:#F2753B;
+  --accent:#F8982B; --accent2:#1DB8B8;
+  --rad:16px; --rad-s:11px;
   --row:28px; --gut:12px;
-  --sh1:0 1px 2px rgba(16,19,24,.06),0 1px 3px rgba(16,19,24,.04);
-  --sh2:0 4px 16px rgba(16,19,24,.10),0 1px 3px rgba(16,19,24,.06);
-  --sh3:0 16px 44px rgba(16,19,24,.22);
+  --sh1:0 1px 2px rgba(29,89,102,.07),0 1px 3px rgba(29,89,102,.05);
+  --sh2:0 4px 16px rgba(29,89,102,.12),0 1px 3px rgba(29,89,102,.07);
+  --sh3:0 16px 44px rgba(29,89,102,.24);
   --safe-b:env(safe-area-inset-bottom,0px);
   --nav-h:calc(58px + var(--safe-b));
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --ink:#f2f4f8; --ink2:#c3cad8; --mut:#8e98ac;
-    --bg:#0e1015; --surf:#171a21; --surf2:#1d212a;
-    --line:#282d38; --line2:#39404e;
-    --papa-s:#16233d; --maman-s:#331528; --duo-s:#241a3d;
-    --gaelle-s:#0c2b21; --grapho-s:#2e2110; --amie-s:#0b2830; --autre-s:#222732;
-    --papa:#6c9bff; --maman:#ff72b0; --duo:#a689ff; --gaelle:#31c495;
-    --grapho:#f0a23a; --amie:#3fbcd8; --autre:#93a0b5; --ok:#31c495; --warn:#f08a4b;
-    --sh1:0 1px 2px rgba(0,0,0,.5); --sh2:0 6px 20px rgba(0,0,0,.5); --sh3:0 18px 50px rgba(0,0,0,.6);
-  }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);
-  font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,system-ui,sans-serif;
+  font:15px/1.45 Raleway,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
   font-feature-settings:"cv11","ss01";letter-spacing:-.005em;
   overscroll-behavior-y:none;padding-bottom:var(--nav-h)}
 h1,h2,h3,h4{margin:0;font-weight:640;letter-spacing:-.02em}
@@ -99,6 +93,26 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 .chip[aria-selected=true] small{color:color-mix(in srgb,var(--bg) 72%,var(--ink))}
 .chip.gh{border-style:dashed;box-shadow:none;background:transparent;color:var(--mut);display:grid;place-items:center;min-width:46px;font-size:19px}
 
+.rotate-hint{display:none;align-items:center;gap:8px;margin:0 var(--gut) 9px;padding:10px 12px;
+  background:color-mix(in srgb,var(--accent) 20%,var(--surf));border:1.5px solid color-mix(in srgb,var(--accent) 55%,transparent);
+  border-radius:12px;font-size:12.5px;color:var(--ink2);font-weight:550}
+.rotate-hint button{margin-left:auto;background:transparent;border:0;color:var(--mut);font-size:15px;padding:2px 4px}
+@media (orientation:portrait) and (max-width:560px){ .rotate-hint.show{display:flex} }
+
+/* hiérarchie : planning au premier plan, outils en retrait */
+.fold{background:transparent;border:1px solid var(--line);border-radius:var(--rad);
+  margin:0 var(--gut) 9px;overflow:hidden}
+.fold>summary{list-style:none;cursor:pointer;padding:11px 13px;font-size:13.5px;font-weight:650;
+  color:var(--ink2);display:flex;align-items:center;gap:7px;background:var(--surf2)}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::after{content:'⌄';margin-left:auto;font-size:15px;color:var(--mut);transition:transform .18s}
+.fold[open]>summary::after{transform:rotate(180deg)}
+.fold>*:not(summary){margin:10px var(--gut) 12px}
+.fold .panel{border:0;box-shadow:none;background:transparent;padding:0;margin-top:0}
+.tools{opacity:.9}
+.seg2.tools{background:transparent;border-color:var(--line)}
+.leg.tools{display:flex;flex-wrap:wrap;gap:5px;padding:0 var(--gut) 10px;opacity:.82}
+
 /* ───── cards / stats ───── */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:11px}
 .st{background:var(--surf);border:1px solid var(--line);border-radius:var(--rad);padding:11px 12px;box-shadow:var(--sh1);position:relative;overflow:hidden}
@@ -131,7 +145,27 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 /* ───── grille semaine ───── */
 .gwrap{background:var(--surf);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--sh1);overflow:hidden}
 .gscroll{overflow:auto;-webkit-overflow-scrolling:touch;max-height:calc(100vh - 210px)}
-.grid{display:grid;grid-template-columns:40px repeat(7,minmax(104px,1fr));min-width:768px;position:relative}
+.grid{display:grid;grid-template-columns:34px repeat(7,minmax(var(--colw,104px),1fr));
+  min-width:calc(34px + 7*var(--colw,104px));position:relative}
+/* téléphone à l'horizontale : la semaine entière tient à l'écran, sans défilement */
+@media (orientation:landscape) and (max-height:520px){
+  :root{--row:19px;--gut:9px;--nav-h:calc(46px + var(--safe-b))}
+  .grid{--colw:0px;min-width:100%}
+  /* en paysage, seul le planning compte : tout le reste se replie */
+  header{padding-top:4px}
+  header .htxt p,#viewChips,.rotate-hint,.fold,.leg,.seg2.tools{display:none!important}
+  header h1{font-size:16px}
+  nav button{font-size:10px}
+  nav .ni{font-size:15px}
+  .ev{font-size:10px;padding:2px 4px;line-height:1.25}
+  .gh .dn{font-size:13px}
+  /* la grille occupe exactement la hauteur libre : en-tête et onglets restent fixes */
+  .gscroll{max-height:calc(100dvh - 61px - var(--nav-h) - 8px);overflow-y:auto}
+  header{position:sticky;top:0;z-index:20}
+  .sp{display:none}
+  main.wrap{padding-bottom:0}
+}
+@media (max-width:430px){ .grid{--colw:86px} }
 .gh{position:sticky;top:0;z-index:6;background:color-mix(in srgb,var(--surf) 92%,transparent);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);padding:7px 6px 6px;text-align:center}
@@ -153,7 +187,7 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 .slot{height:var(--row);border-bottom:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
 .slot.hr{border-bottom-color:var(--line)}
 .nap{position:absolute;left:0;right:0;pointer-events:none;z-index:0;
-  background:repeating-linear-gradient(135deg,transparent,transparent 5px,color-mix(in srgb,var(--mut) 13%,transparent) 5px,color-mix(in srgb,var(--mut) 13%,transparent) 10px)}
+  background:repeating-linear-gradient(135deg,#faf3e8,#faf3e8 5px,#f1e5d3 5px,#f1e5d3 10px)}
 .nowline{position:absolute;left:0;right:0;height:2px;background:var(--maman);z-index:7;pointer-events:none}
 .nowline::before{content:'';position:absolute;left:-1px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--maman)}
 .ghost{position:absolute;left:3px;right:3px;border:2px dashed var(--ink2);border-radius:9px;z-index:8;
@@ -167,7 +201,12 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
   box-shadow:0 1px 2px rgba(16,19,24,.07);transition:box-shadow .15s,transform .15s}
 .ev .t{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:620;line-height:1.25}
 .ev .t .em{font-size:10.5px}
-.ev .t b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.ev .t b{min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  word-break:break-word;hyphens:auto;line-height:1.2}
+/* bloc court : une seule ligne, sinon le texte déborde du cadre */
+.ev.tiny .t b{-webkit-line-clamp:1;white-space:nowrap;text-overflow:ellipsis}
+.ev.tiny .m{display:none}
+.ev.tiny .t{font-size:10px}
 .ev .m{font-size:9.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
 .ev .kb{display:inline-block;font-size:8.5px;font-weight:800;padding:0 3px;border-radius:4px;
   background:var(--c);color:#fff;flex:0 0 auto;letter-spacing:.02em}
@@ -201,6 +240,7 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 .triple button[aria-pressed=true][data-v=papa]{background:var(--papa)}
 .triple button[aria-pressed=true][data-v=maman]{background:var(--maman)}
 .triple button[aria-pressed=true][data-v=duo]{background:var(--duo)}
+.triple button[aria-pressed=true][data-v=mamie]{background:var(--mamie)}
 .item{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:var(--rad-s);
   background:var(--s);border:1px solid color-mix(in srgb,var(--c) 22%,transparent);
   border-left:3.5px solid var(--c);margin-bottom:7px;text-align:left;width:100%;transition:transform .12s}
@@ -346,6 +386,7 @@ details .body b{color:var(--ink)}
 </header>
 
 <div id="viewChips"></div>
+<div class="rotate-hint" id="rot">📱 Tourne ton téléphone : la semaine entière tient à l'écran<button id="rotX">✕</button></div>
 
 <main class="wrap" id="main"></main>
 
@@ -374,12 +415,13 @@ const WHO={
   maman :{n:'Maman',  s:'M',  v:'--maman'},
   duo   :{n:'Tous les deux', s:'P+M', v:'--duo'},
   gaelle:{n:'Gaëlle', s:'G',  v:'--gaelle'},
+  mamie :{n:'Mamie',  s:'Ma', v:'--mamie'},
   grapho:{n:'Grapho', s:'Gr', v:'--grapho'},
   amie  :{n:'Amie',   s:'A',  v:'--amie'},
   autre :{n:'Autre',  s:'?',  v:'--autre'}
 };
-const PARENTS=['papa','maman','duo'];
-const PAID={gaelle:180,grapho:140,amie:0,autre:0};
+const PARENTS=['papa','maman','duo','mamie'];
+const PAID={gaelle:180,grapho:140,amie:0,mamie:0,autre:0};
 const KIND={
   ecole    :{n:'École',    e:'📘'},
   activite :{n:'Activité', e:'🤸'},
@@ -408,7 +450,7 @@ const fdate=(d,o)=>d.toLocaleDateString('fr-FR',o||{day:'numeric',month:'long'})
 /*═══════════ presets ═══════════*/
 function mk(day,start,len,label,kind,owner,kids,cost,trip){
   return{id:nid(),day,start,len,label,kind,owner,kids:kids||'eloha',cost:cost||0,trip:trip||0}}
-const school=(d,s,l,o)=>mk(d,s,l,'École maison','ecole',o,'eloha');
+const school=(d,s,l,o)=>mk(d,s,l,'École','ecole',o,'eloha');
 const grapho=d=>mk(d,540,60,'Grapho','ecole','grapho','eloha',140);
 const gaelle=(d,s)=>mk(d,s||570,180,'Gaëlle','garde','gaelle','both',180);
 const DUTY=()=>({0:{am:'papa',pm:'maman'},1:{am:'papa',pm:'maman'},2:{am:'maman',pm:'papa'},
@@ -416,10 +458,10 @@ const DUTY=()=>({0:{am:'papa',pm:'maman'},1:{am:'papa',pm:'maman'},2:{am:'maman'
 /* répartitions équilibrées (recherche exhaustive : max de demi-journées ≥3h pour les deux,
    écart de garde minimal, pas de journée de garde > 10h) */
 const DUTY_OPT={
- light  :{0:{am:'maman',pm:'papa'},1:{am:'papa',pm:'maman'},2:{am:'papa',pm:'maman'},3:{am:'papa',pm:'maman'},4:{am:'papa',pm:'maman'},5:{am:'papa',pm:'maman'},6:{am:'papa',pm:'maman'}},
- middle :{0:{am:'papa',pm:'maman'},1:{am:'papa',pm:'papa'},2:{am:'papa',pm:'maman'},3:{am:'maman',pm:'papa'},4:{am:'maman',pm:'maman'},5:{am:'maman',pm:'papa'},6:{am:'maman',pm:'papa'}},
- full   :{0:{am:'maman',pm:'papa'},1:{am:'papa',pm:'maman'},2:{am:'papa',pm:'maman'},3:{am:'papa',pm:'maman'},4:{am:'papa',pm:'maman'},5:{am:'maman',pm:'papa'},6:{am:'maman',pm:'papa'}},
- propose:{0:{am:'papa',pm:'maman'},1:{am:'papa',pm:'papa'},2:{am:'maman',pm:'papa'},3:{am:'papa',pm:'maman'},4:{am:'maman',pm:'maman'},5:{am:'maman',pm:'papa'},6:{am:'maman',pm:'papa'}}
+ light  :{0:{am:'papa',pm:'duo'},1:{am:'maman',pm:'maman'},2:{am:'maman',pm:'papa'},3:{am:'papa',pm:'duo'},4:{am:'maman',pm:'papa'},5:{am:'papa',pm:'maman'},6:{am:'duo',pm:'duo'}},
+ middle :{0:{am:'maman',pm:'duo'},1:{am:'maman',pm:'maman'},2:{am:'papa',pm:'papa'},3:{am:'maman',pm:'duo'},4:{am:'papa',pm:'maman'},5:{am:'papa',pm:'papa'},6:{am:'duo',pm:'duo'}},
+ full   :{0:{am:'maman',pm:'duo'},1:{am:'papa',pm:'papa'},2:{am:'papa',pm:'maman'},3:{am:'maman',pm:'duo'},4:{am:'maman',pm:'maman'},5:{am:'papa',pm:'papa'},6:{am:'duo',pm:'duo'}},
+ propose:{0:{am:'duo',pm:'duo'},1:{am:'maman',pm:'papa'},2:{am:'papa',pm:'maman'},3:{am:'maman',pm:'duo'},4:{am:'maman',pm:'maman'},5:{am:'papa',pm:'papa'},6:{am:'duo',pm:'duo'}}
 };
 
 function core(){return[
@@ -428,7 +470,22 @@ function core(){return[
   school(3,510,60,'papa'),
   school(4,510,60,'maman'), mk(4,780,180,'Skate + batterie','activite','amie','both',0,0),
   school(5,510,30,'papa'),  mk(5,780,120,'Ninja','activite','papa','eloha',0,45),
-  school(6,510,30,'maman')]}
+  ]}
+
+
+/* Règle de vie : une demi-journée sans activité ni école, c'est « tous les deux ».
+   Les demi-journées qui portent une activité gardent le parent désigné. */
+function duoParDefaut(pl){
+  for(let d=0;d<7;d++){
+    ['am','pm'].forEach(hd=>{
+      const occupe=pl.blocks.some(b=>b.day===d &&
+        (hd==='am' ? b.start<MID : b.start+b.len>MID) &&
+        (b.kind==='ecole'||b.kind==='activite'||b.kind==='garde'));
+      if(!occupe) pl.duty[d][hd]='duo';
+    });
+  }
+  return pl;
+}
 
 function presets(){
   const P={};
@@ -454,7 +511,7 @@ function presets(){
   P.propose={name:'Proposée',kind:'type',blocks:pr,duty:JSON.parse(JSON.stringify(DUTY_OPT.propose))};
 
   P.blank={name:'Page blanche',kind:'type',blocks:[],duty:DUTY()};
-  Object.keys(P).forEach(k=>P[k].meta={vj:false,va:false,note:''});
+  Object.keys(P).forEach(k=>{P[k].meta={vj:false,va:false,note:''};duoParDefaut(P[k])});
   return P;
 }
 
@@ -496,7 +553,10 @@ function engine(pl){
       else cov[b.kids]=cov[b.kids]||b.owner;
     });
     if(!cov.eloha||!cov.ael){
-      if(on==='duo'){busy.papa=busy.maman=true;tog=true}else busy[on]=true;
+      /* Mamie prend le relais : les deux parents sont libres sur ce créneau */
+      if(on==='mamie'){}
+      else if(on==='duo'){busy.papa=busy.maman=true;tog=true}
+      else busy[on]=true;
     }
     const fp=!busy.papa,fm=!busy.maman;
     slots.push({d,t,hd,fp,fm});
@@ -555,17 +615,20 @@ function paintChips(){
 function paintPlan(){
   const p=P(),c=engine(p);
   const m=$('main');
+  /* Le planning d'abord. Les outils (chiffres, légende, accord) viennent après,
+     en second plan visuel. */
   m.innerHTML=
-   '<div class="seg2" style="margin-left:0;margin-right:0"><button id="mGrid" aria-selected="'+gridMode+'">Semaine</button>'+
+   '<div class="seg2 tools" style="margin-left:0;margin-right:0"><button id="mGrid" aria-selected="'+gridMode+'">Semaine</button>'+
    '<button id="mDay" aria-selected="'+(!gridMode)+'">Jour par jour</button></div>'+
-   '<div class="stats" id="stats"></div>'+
-   '<div class="panel noprint" style="padding:10px 12px"><div class="leg" id="leg"></div></div>'+
    '<div id="body"></div>'+
-   '<div class="panel" id="frictions"></div>'+
-   '<div class="panel noprint"><h3>✍️ Accord</h3><div class="opts g2" id="votes"></div>'+
-   '<textarea id="note" placeholder="Ce qui coince, les conditions, à rediscuter…" style="margin-top:10px;width:100%;'+
-   'background:var(--surf2);border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:15px;min-height:62px"></textarea></div>'+
-   '<div class="panel noprint"><details><summary>📐 Comment on compte</summary><div class="body" id="help"></div></details></div><div class="sp"></div>';
+   '<div class="leg tools" id="leg"></div>'+
+   '<details class="fold tools" id="foldStats" open><summary>Ce que ça donne</summary>'+
+     '<div class="stats" id="stats"></div><div class="panel" id="frictions"></div></details>'+
+   '<details class="fold tools"><summary>✍️ Notre accord</summary>'+
+     '<div class="opts g2" id="votes"></div>'+
+     '<textarea id="note" placeholder="Ce qui coince, les conditions, à rediscuter…" style="margin-top:10px;width:100%;'+
+     'background:var(--surf2);border:1.5px solid var(--line);border-radius:12px;padding:12px;font-size:15px;min-height:62px"></textarea></details>'+
+   '<details class="fold tools"><summary>📐 Comment on compte</summary><div class="body" id="help"></div></details><div class="sp"></div>';
   $('mGrid').onclick=()=>{gridMode=true;paint()};
   $('mDay').onclick=()=>{gridMode=false;paint()};
   paintStats(c);paintLegend();
@@ -603,7 +666,7 @@ function paintStats(c){
       dur(Math.abs(c.load.papa-c.load.maman))+'</span></div>';
 }
 function paintLegend(){
-  const l=['papa','maman','duo','gaelle','grapho','amie'].map(w=>
+  const l=['papa','maman','duo','mamie','gaelle','grapho','amie'].map(w=>
     '<span class="lg"><span class="dot" style="background:'+cvar(w)+'">'+WHO[w].s+'</span>'+WHO[w].n+'</span>').join('');
   const k=Object.keys(KIND).map(x=>'<span class="lg" style="padding-left:9px">'+KIND[x].e+' '+KIND[x].n+'</span>').join('');
   $('leg').innerHTML=l+k+'<span class="lg" style="padding-left:9px">É / A / É+A = enfant concerné</span>';
@@ -658,7 +721,7 @@ const tOf=py=>clamp(Math.round((py/ROW*30+T0)/SNAP)*SNAP,T0,T1);
 
 function evEl(b,p){
   const e=document.createElement('div');
-  e.className='ev'+(b.len<=45?' mini':'');e.dataset.id=b.id;
+  e.className='ev'+(b.len<=45?' mini':'')+(b.len<=60?' tiny':'');e.dataset.id=b.id;
   e.style.setProperty('--c',cvar(b.owner));e.style.setProperty('--s',svar(b.owner));
   e.style.top=y(b.start)+'px';e.style.height=Math.max(y(b.start+b.len)-y(b.start)-2,22)+'px';
   e.innerHTML='<div class="t"><span class="em">'+KIND[b.kind].e+'</span>'+
@@ -1093,7 +1156,9 @@ function paint(){
   paintHeader();paintChips();
   document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));
   $('fab').style.display=tab==='plan'?'grid':'none';
+  if(paysage()&&tab==='plan')gridMode=true;   /* paysage = vue semaine plein écran */
   if(tab==='plan')paintPlan();else if(tab==='cmp')paintCompare();else paintNext();
+  rotHint();
   S.tab=tab;
 }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
@@ -1127,6 +1192,16 @@ function incoming(){
 }
 incoming();
 addEventListener('hashchange',incoming);
+
+/* bandeau rotation : en vue Semaine, en portrait, tant qu'on ne l'a pas masqué */
+function paysage(){return matchMedia('(orientation:landscape) and (max-height:520px)').matches}
+function rotHint(){
+  const el=$('rot');if(!el)return;
+  const off=localStorage.getItem('rot-off')==='1';
+  el.classList.toggle('show', gridMode && tab==='plan' && !off);
+}
+$('rotX').onclick=()=>{localStorage.setItem('rot-off','1');$('rot').classList.remove('show')};
+addEventListener('orientationchange',()=>setTimeout(()=>{paint()},150));
 
 tab=S.tab||'plan';
 paint();
