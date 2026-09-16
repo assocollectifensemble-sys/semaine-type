@@ -85,12 +85,17 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 /* chips versions */
 .chips{display:flex;gap:7px;overflow-x:auto;padding:2px var(--gut) 10px;scrollbar-width:none;scroll-snap-type:x proximity}
 .chips::-webkit-scrollbar{display:none}
+.chipwrap{position:relative}
+.chipwrap::after{content:'';position:absolute;top:0;right:0;bottom:10px;width:26px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--bg) 78%)}
 .chip{flex:0 0 auto;scroll-snap-align:start;padding:7px 12px;border-radius:12px;background:var(--surf);
   border:1px solid var(--line);box-shadow:var(--sh1);text-align:left;transition:transform .12s}
 .chip:active{transform:scale(.97)}
 .chip b{display:block;font-size:13px;font-weight:600}
 .chip small{display:block;font-size:11px;color:var(--mut);margin-top:1px}
-.chip[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:var(--bg);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--ink) 18%,transparent),var(--sh2)}
+.chip[aria-selected=true] b::after{content:' ✓';font-size:11px;opacity:.85}
 .chip[aria-selected=true] small{color:color-mix(in srgb,var(--bg) 72%,var(--ink))}
 .chip.gh{border-style:dashed;box-shadow:none;background:transparent;color:var(--mut);display:grid;place-items:center;min-width:46px;font-size:19px}
 
@@ -98,6 +103,11 @@ header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 8
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:11px}
 .st{background:var(--surf);border:1px solid var(--line);border-radius:var(--rad);padding:11px 12px;box-shadow:var(--sh1);position:relative;overflow:hidden}
 .st::before{content:'';position:absolute;inset:0 auto 0 0;width:3px;background:var(--c,transparent)}
+.pills{display:flex;flex-wrap:wrap;gap:4px;margin:5px 0 6px}
+.pill{font-style:normal;font-size:10.5px;font-weight:600;padding:2.5px 6px;border-radius:7px;
+  background:color-mix(in srgb,var(--c,var(--ink)) 13%,transparent);color:var(--ink2);white-space:nowrap}
+.pill.nil{background:var(--surf2);color:var(--mut);font-weight:500}
+.st .sub{display:block;font-size:10.5px;color:var(--mut)}
 .st .k{font-size:11px;color:var(--mut);font-weight:550;text-transform:uppercase;letter-spacing:.05em;display:block}
 .st .v{font-size:26px;font-weight:660;letter-spacing:-.035em;display:block;margin:1px 0 0;font-variant-numeric:tabular-nums}
 .st .v em{font-style:normal;font-size:13px;font-weight:550;color:var(--mut);letter-spacing:-.01em}
@@ -524,7 +534,7 @@ function paintChips(){
   const host=$('viewChips');
   if(tab!=='plan'){host.innerHTML='';return}
   const ids=S.order.filter(k=>S.plans[k]);
-  host.innerHTML='<div class="chips" id="chipRow"></div>';
+  host.innerHTML='<div class="chipwrap"><div class="chips" id="chipRow"></div></div>';
   const row=$('chipRow');
   ids.forEach(k=>{
     const p=S.plans[k],c=engine(p);
@@ -573,14 +583,17 @@ function paintPlan(){
   n.oninput=e=>{P().meta.note=e.target.value;save()};
 }
 function paintStats(c){
-  const hd=w=>c.runs[w].length?c.runs[w].map(r=>D3[r.d]+(r.hd==='am'?' mat':' ap')).join(' · '):'aucune';
+  /* demi-journées libres affichées en pastilles lisibles plutôt qu'en liste dense */
+  const hd=w=>c.runs[w].length
+    ? '<span class="pills">'+c.runs[w].map(r=>'<i class="pill">'+D3[r.d]+(r.hd==='am'?' mat':' ap')+'</i>').join('')+'</span>'
+    : '<span class="pills"><i class="pill nil">aucune</i></span>';
   $('stats').innerHTML=
   '<div class="st" style="--c:var(--papa)"><span class="k">Papa — demi-j. libres</span>'+
     '<span class="v">'+c.runs.papa.length+' <em>≥3h</em></span>'+
-    '<div class="s">'+esc(hd('papa'))+'<br>garde '+dur(c.load.papa)+' · max '+dur(c.longest.papa.len)+' d\'affilée</div></div>'+
+    '<div class="s">'+hd('papa')+'<span class="sub">garde '+dur(c.load.papa)+' · max '+dur(c.longest.papa.len)+' d\'affilée</span></div></div>'+
   '<div class="st" style="--c:var(--maman)"><span class="k">Maman — demi-j. libres</span>'+
     '<span class="v">'+c.runs.maman.length+' <em>≥3h</em></span>'+
-    '<div class="s">'+esc(hd('maman'))+'<br>garde '+dur(c.load.maman)+' · max '+dur(c.longest.maman.len)+' d\'affilée</div></div>'+
+    '<div class="s">'+hd('maman')+'<span class="sub">garde '+dur(c.load.maman)+' · max '+dur(c.longest.maman.len)+' d\'affilée</span></div></div>'+
   '<div class="st w"><span><span class="k">À deux sans enfants</span><span class="v">'+dur(c.both)+'</span></span>'+
     '<span><span class="k">Tous les 4</span><span class="v">'+dur(c.fam)+'</span></span>'+
     '<span><span class="k">Coût</span><span class="v">'+c.cost+' €</span></span>'+
