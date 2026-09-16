@@ -29,7 +29,7 @@
   --bg:#fdf8f1; --surf:#ffffff; --surf2:#fffaf3;
   --line:#efe1d1; --line2:#ddcab5;
   --ok:#7FA93B; --warn:#F2753B;
-  --accent:#F8982B; --accent2:#1DB8B8;
+  --accent:#F8982B; --accent2:#1DB8B8; --deep:#1D5966;
   --rad:16px; --rad-s:11px;
   --row:28px; --gut:12px;
   --sh1:0 1px 2px rgba(29,89,102,.07),0 1px 3px rgba(29,89,102,.05);
@@ -295,7 +295,7 @@ nav button .ni{font-size:19px;line-height:1.1}
 nav button[aria-selected=true]{color:var(--ink)}
 nav button[aria-selected=true] .ni{transform:translateY(-1px)}
 .fab{position:fixed;right:calc(var(--gut) + 2px);bottom:calc(var(--nav-h) + 12px);z-index:46;
-  width:54px;height:54px;border-radius:18px;background:var(--ink);color:var(--bg);
+  width:54px;height:54px;border-radius:18px;background:var(--accent);color:#fff;
   display:grid;place-items:center;font-size:26px;box-shadow:var(--sh2);transition:transform .14s}
 .fab:active{transform:scale(.92)}
 
@@ -354,7 +354,7 @@ nav button[aria-selected=true] .ni{transform:translateY(-1px)}
 
 /* toast */
 .toast{position:fixed;left:50%;transform:translateX(-50%) translateY(14px);z-index:80;
-  bottom:calc(var(--nav-h) + 16px);background:var(--ink);color:var(--bg);border-radius:14px;
+  bottom:calc(var(--nav-h) + 16px);background:var(--deep);color:#fff;border-radius:14px;
   padding:11px 14px;font-size:13.5px;font-weight:550;box-shadow:var(--sh2);display:flex;align-items:center;gap:12px;
   opacity:0;transition:.2s;pointer-events:none;max-width:calc(100vw - 24px)}
 .toast.on{opacity:1;transform:translateX(-50%);pointer-events:auto}
