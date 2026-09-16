@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#16181c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Semaine">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADf0lEQVR4nO3dwW0bVxRAUUpxDYYFuIK0kHUqSANBCgvSQCrIOi2khakiQABrHVjSnT+c4TtnT77FXHyaoPX+0+cvX2/wUc8ffiUIiMoJRCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRfLot9vtPPyx659/+/re8/OXnX29rbH/98eHXvvzy422N7c9/Vrzt07r1LuvSiRmtS6dktC6dpRk9X7qeDww6pp7bOwcdU8+KQc+Xrue94w6r513jDqtnxbjnq9fz9qEH1/PGoQfXs/tQ38I4U0B3OX7eMvoux893R9/l+Nl3tBOIREAkAiIREImASAREIiASAZEIiERAJAIiERDJlIDKfzO97ugDTAmIRQYFdJeTYHvo42dWQMc/zu3R6xkX0JEPdRtQzxF/F3ZCr4/2nH8XdjkTAxr4mNcZ9xHGvgREIiASAZEIiDMFFFeuXHT0ZE4gThbQXU4Cx89DnUAHP071POBH2GEPVT0P+1PG66O1I/GxfRp4Qqxe9fLy7f2H/NY27lvYOXckXtesgM65I/HSBgV0zh2JVzcoIFaYEtA5dyQ+gCkBndO25vqBI0cLiERAEw+hbb+hAhrX0LbrOAHNamjbe9Dc+8LOZvv2aC93X9jCgFZfe/D6/g+Z0YWMuy+Mfc26L4zdDbovjBV8CyOZcl8YiziBSAREIiASAZEIiGTuirtzevFbGB+z+grw1/ff/bc2H2Gn8HLUBfK7DxLQoHpWjBPQrHp2HyogEgGNO372HW1HIokTiMSORBI7EknsSCSZuyORXUzckciOfAsjERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIpgR0x9u7tv8fbVM90005ge51CG3fG2pT/ZUc3ND2tnE21V/JYQ1t7xl03U31T5+/fL2NtO4ary00erntHHMDYheD/hHNCgIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiBuxX/bndzTAmPuFgAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADf0lEQVR4nO3dwW0bVxRAUUpxDYYFuIK0kHUqSANBCgvSQCrIOi2khakiQABrHVjSnT+c4TtnT77FXHyaoPX+0+cvX2/wUc8ffiUIiMoJRCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRfLot9vtPPyx659/+/re8/OXnX29rbH/98eHXvvzy422N7c9/Vrzt07r1LuvSiRmtS6dktC6dpRk9X7qeDww6pp7bOwcdU8+KQc+Xrue94w6r513jDqtnxbjnq9fz9qEH1/PGoQfXs/tQ38I4U0B3OX7eMvoux893R9/l+Nl3tBOIREAkAiIREImASAREIiASAZEIiERAJAIiERDJlIDKfzO97ugDTAmIRQYFdJeTYHvo42dWQMc/zu3R6xkX0JEPdRtQzxF/F3ZCr4/2nH8XdjkTAxr4mNcZ9xHGvgREIiASAZEIiDMFFFeuXHT0ZE4gThbQXU4Cx89DnUAHP071POBH2GEPVT0P+1PG66O1I/GxfRp4Qqxe9fLy7f2H/NY27lvYOXckXtesgM65I/HSBgV0zh2JVzcoIFaYEtA5dyQ+gCkBndO25vqBI0cLiERAEw+hbb+hAhrX0LbrOAHNamjbe9Dc+8LOZvv2aC93X9jCgFZfe/D6/g+Z0YWMuy+Mfc26L4zdDbovjBV8CyOZcl8YiziBSAREIiASAZEIiGTuirtzevFbGB+z+grw1/ff/bc2H2Gn8HLUBfK7DxLQoHpWjBPQrHp2HyogEgGNO372HW1HIokTiMSORBI7EknsSCSZuyORXUzckciOfAsjERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIpgR0x9u7tv8fbVM90005ge51CG3fG2pT/ZUc3ND2tnE21V/JYQ1t7xl03U31T5+/fL2NtO4ary00erntHHMDYheD/hHNCgIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiBuxX/bndzTAmPuFgAAAABJRU5ErkJggg==">
+<title>Semaine type — Éloha &amp; Aël</title>
+<style>
+:root{
+  --ink:#16181c;--ink2:#464b54;--mut:#858c96;
+  --bg:#f6f4f1;--surf:#fffefc;--surf2:#faf8f5;--line:#e3dfd8;--line2:#cfc9bf;
+  --ecole:#b4531f;--ecoleb:#fbeee5;
+  --acti:#2f5d7c;--actib:#e9f0f5;
+  --garde:#2f6b46;--gardeb:#e8f1ea;
+  --perso:#6b4b8a;--persob:#f0eaf6;
+  --papa:#3b5ea8;--maman:#a63b86;
+  --warn:#9a3412;--ok:#2f6b46;
+  --row:30px;--r:10px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;overscroll-behavior-y:contain}
+body{background:var(--bg);color:var(--ink);
+  font:15px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-text-size-adjust:100%;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:10px 10px 120px}
+
+.top{position:sticky;top:0;z-index:30;background:var(--bg);padding:8px 0 6px;
+  border-bottom:1px solid var(--line);margin-bottom:10px}
+.top .l1{display:flex;align-items:center;gap:8px}
+.top h1{font-size:16px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ico{border:1px solid var(--line2);background:var(--surf);border-radius:8px;
+  width:36px;height:36px;display:grid;place-items:center;font-size:15px;flex:0 0 auto}
+.ico:active{background:#eee}
+
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:6px 10px;border:1px solid var(--line2);background:var(--surf);
+  border-radius:20px;font-size:13px;display:flex;gap:6px;align-items:center;white-space:nowrap}
+.chip b{font-weight:650}
+.chip small{color:var(--mut);font-variant-numeric:tabular-nums}
+.chip[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip[aria-selected=true] small{color:#cbd0d7}
+.chip.add{border-style:dashed;color:var(--mut)}
+
+.score{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:10px 11px}
+.card .k{font-size:11.5px;color:var(--mut);display:block}
+.card .v{font-size:23px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums;display:block;margin-top:2px}
+.card .s{font-size:11.5px;color:var(--ink2);margin-top:1px}
+.card.p{border-left:3px solid var(--papa)}
+.card.m{border-left:3px solid var(--maman)}
+.card.two{grid-column:1/-1;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.card.two .v{font-size:20px}
+.pill{font-size:11px;padding:1px 6px;border-radius:20px;background:var(--surf2);border:1px solid var(--line);color:var(--ink2)}
+.bad{color:var(--warn)}.okc{color:var(--ok)}
+
+.day{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;overflow:hidden}
+.day>h3{font-size:14px;padding:9px 11px 7px;display:flex;align-items:center;gap:8px}
+.day>h3 .free{margin-left:auto;font-size:11px;font-weight:500;color:var(--mut)}
+.half{border-top:1px solid var(--line);padding:8px 11px 10px}
+.half .hh{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.half .hh .lbl{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;flex:0 0 auto}
+.duty{display:flex;border:1px solid var(--line2);border-radius:7px;overflow:hidden;margin-left:auto}
+.duty button{border:0;background:var(--surf);padding:4px 9px;font-size:12px;border-left:1px solid var(--line)}
+.duty button:first-child{border-left:0}
+.duty button[aria-pressed=true][data-v=papa]{background:var(--papa);color:#fff}
+.duty button[aria-pressed=true][data-v=maman]{background:var(--maman);color:#fff}
+.row{display:flex;gap:8px;align-items:stretch;padding:7px 8px;border-radius:8px;
+  border:1px solid var(--line);border-left-width:3px;background:var(--surf2);margin-bottom:6px}
+.row.ecole{border-left-color:var(--ecole);background:var(--ecoleb)}
+.row.activite{border-left-color:var(--acti);background:var(--actib)}
+.row.garde{border-left-color:var(--garde);background:var(--gardeb)}
+.row.perso{border-left-color:var(--perso);background:var(--persob)}
+.row .tm{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink2);flex:0 0 auto;width:52px;line-height:1.3}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:13.5px;font-weight:600}
+.row .tx span{display:block;font-size:11.5px;color:var(--ink2);margin-top:1px}
+.row .go{color:var(--mut);align-self:center;font-size:16px}
+.addb{width:100%;border:1px dashed var(--line2);background:transparent;border-radius:8px;
+  padding:7px;color:var(--mut);font-size:12.5px}
+.free-tag{font-size:11.5px;padding:3px 0 0;color:var(--ok)}
+.free-tag i{font-style:normal}
+.who{display:inline-block;font-size:10px;font-weight:700;padding:0 4px;border-radius:4px;color:#fff;margin-right:4px;vertical-align:1px}
+.who.papa{background:var(--papa)}.who.maman{background:var(--maman)}.who.tiers{background:var(--garde)}
+
+#week{display:none}
+.gw{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.gs{overflow-x:auto}
+.grid{display:grid;grid-template-columns:44px repeat(7,minmax(118px,1fr));min-width:880px;position:relative}
+.dh{padding:6px 8px;font-size:12px;font-weight:650;border-bottom:1px solid var(--line);
+  border-left:1px solid var(--line);background:var(--surf2);position:sticky;top:0;z-index:3}
+.dh small{display:block;font-weight:500;color:var(--mut);font-size:10.5px}
+.dh:first-child{border-left:0}
+.hours{border-right:1px solid var(--line)}
+.hr{height:var(--row);font-size:10px;color:var(--mut);text-align:right;padding-right:5px}
+.hr.oc{border-top:1px solid var(--line)}
+.col{position:relative;border-left:1px solid var(--line)}
+.col .sl{height:var(--row);border-top:1px dotted #efece7}
+.col .sl.oc{border-top:1px solid var(--line)}
+.col .nap{position:absolute;left:0;right:0;pointer-events:none;
+  background:repeating-linear-gradient(135deg,#f3efe8,#f3efe8 5px,#eae5db 5px,#eae5db 10px)}
+.blk{position:absolute;left:3px;right:3px;border-radius:6px;padding:2px 5px;font-size:11px;
+  line-height:1.2;overflow:hidden;border-left:3px solid;touch-action:none;user-select:none}
+.blk.ecole{background:var(--ecoleb);border-color:var(--ecole)}
+.blk.activite{background:var(--actib);border-color:var(--acti)}
+.blk.garde{background:var(--gardeb);border-color:var(--garde)}
+.blk.perso{background:var(--persob);border-color:var(--perso)}
+.blk b{font-weight:650;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk span{font-size:10px;color:var(--ink2)}
+.blk.drag{opacity:.88;box-shadow:0 8px 20px rgba(0,0,0,.2);z-index:9}
+
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;margin-top:10px}
+.panel h3{font-size:13px;margin-bottom:7px}
+.al{font-size:13px;padding:6px 0;border-top:1px solid var(--line);color:var(--ink2)}
+.al:first-of-type{border-top:0}
+.al b{color:var(--warn)}.al.g b{color:var(--ok)}
+.votes{display:flex;flex-wrap:wrap;gap:8px}
+.votes button{border:1px solid var(--line2);background:var(--surf);border-radius:20px;padding:6px 12px;font-size:13px}
+.votes button[aria-pressed=true]{background:var(--ok);border-color:var(--ok);color:#fff}
+textarea{width:100%;border:1px solid var(--line2);border-radius:8px;padding:8px;font-size:13px;
+  background:#fff;min-height:54px;resize:vertical;margin-top:8px}
+.small{font-size:12px;color:var(--mut)}
+details summary{font-size:13px;font-weight:650;padding:2px 0}
+details p,details li{font-size:12.5px;color:var(--ink2)}
+
+.sheet{position:fixed;inset:0;z-index:50;display:none}
+.sheet.on{display:block}
+.sheet .bd{position:absolute;inset:0;background:rgba(20,20,22,.34)}
+.sheet .pn{position:absolute;left:0;right:0;bottom:0;background:var(--surf);
+  border-radius:16px 16px 0 0;max-height:92vh;overflow:auto;
+  padding:8px 14px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 34px rgba(0,0,0,.2)}
+@media(min-width:760px){.sheet .pn{left:50%;transform:translateX(-50%);max-width:620px;border-radius:16px;bottom:16px}}
+.grab{width:38px;height:4px;border-radius:3px;background:var(--line2);margin:4px auto 10px}
+.f{margin-bottom:11px}
+.f>label{display:block;font-size:11.5px;color:var(--mut);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.f input[type=text],.f input[type=number],.f input[type=date],.f select,.f textarea{
+  width:100%;border:1px solid var(--line2);border-radius:9px;padding:10px;font-size:15px;background:#fff}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line2);background:#fff;border-radius:9px;padding:9px 11px;font-size:13.5px;flex:1;min-width:76px}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.two{display:flex;gap:9px}.two>*{flex:1}
+.stepper{display:flex;align-items:center;border:1px solid var(--line2);border-radius:9px;overflow:hidden;background:#fff}
+.stepper button{border:0;background:#fff;padding:10px 0;flex:0 0 46px;font-size:17px}
+.stepper span{flex:1;text-align:center;font-size:15px;font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:8px;margin-top:4px}
+.btn{border:1px solid var(--line2);background:#fff;border-radius:9px;padding:11px 14px;font-size:14px;flex:1}
+.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.dang{color:var(--warn);border-color:#e8cabe;flex:0 0 auto}
+.menu{display:flex;flex-direction:column;gap:2px}
+.menu button{text-align:left;border:0;background:transparent;padding:12px 6px;font-size:15px;border-bottom:1px solid var(--line)}
+.menu button small{display:block;color:var(--mut);font-size:12px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:#fff;
+  padding:10px 16px;border-radius:22px;font-size:13.5px;z-index:99;opacity:0;transition:.2s;pointer-events:none}
+.toast.on{opacity:1}
+@media print{
+  .top,.chips,.sheet,.toast,.noprint{display:none!important}
+  body{background:#fff}#week{display:block!important}#days{display:none!important}
+  .grid{min-width:0}.gs{overflow:visible}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <div class="l1">
+    <h1 id="ttl">Semaine type</h1>
+    <button class="ico" id="vw" title="Changer de vue">▦</button>
+    <button class="ico" id="sh" title="Partager">↗</button>
+    <button class="ico" id="mn" title="Menu">⋯</button>
+  </div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<div class="score" id="score"></div>
+
+<div id="days"></div>
+<div id="week"><div class="gw"><div class="gs"><div class="grid" id="grid"></div></div></div></div>
+
+<div class="panel" id="alerts"></div>
+
+<div class="panel noprint">
+  <h3>Accord</h3>
+  <div class="votes">
+    <button id="vj">Jonathan : à valider</button>
+    <button id="va">Aurélie : à valider</button>
+  </div>
+  <textarea id="note" placeholder="Remarques, conditions, ce qui coince…"></textarea>
+</div>
+
+<div class="panel noprint">
+  <details>
+    <summary>Comment le temps libre est calculé</summary>
+    <p>Deux adultes, deux enfants. Sur chaque demi-heure de 8 h à 20 h :</p>
+    <ul>
+      <li>chaque bloc dit <b>qui s'en occupe</b> (Papa, Maman, Grapho, Gaëlle, l'amie…) et <b>quel enfant</b> ;</li>
+      <li>l'enfant qui n'est dans aucun bloc est pris par le <b>parent de garde</b> de la demi-journée (réglable en haut de chaque demi-journée) ;</li>
+      <li>un parent est <b>libre</b> s'il ne tient aucun bloc et n'a aucun enfant sur le dos à ce moment-là.</li>
+    </ul>
+    <p>D'où les deux chiffres qui comptent : le <b>temps solo de chacun</b> — et surtout ses <b>demi-journées de 3 h d'affilée</b>, les seules utilisables pour travailler — et le <b>temps à deux</b>. Un parent de garde bien placé libère l'autre gratuitement ; l'argent ne sert qu'à libérer les <b>deux</b> en même temps.</p>
+    <p>Coûts de départ, modifiables bloc par bloc : Grapho <b>140 €/mois</b> la séance hebdo, Gaëlle <b>180 €/mois</b> le bloc de 3 h hebdo, l'amie du vendredi <b>0 €</b>. Les durées d'activité <b>incluent les trajets</b> : remplis « dont trajet » pour voir l'activité nette.</p>
+  </details>
+</div>
+
+</div>
+
+<div class="sheet" id="sheet"><div class="bd"></div><div class="pn" id="pn"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DAYS=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+const D3=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+const T0=8*60,T1=20*60,MID=13*60,STEP=30,ROW=30,NAP=[12*60+30,14*60+30];
+const OWN={papa:"Papa",maman:"Maman",grapho:"Grapho",gaelle:"Gaëlle",amie:"Amie",autre:"Autre tiers"};
+const TIERS=["grapho","gaelle","amie","autre"];
+const KIND={ecole:"École",activite:"Activité",garde:"Garde",perso:"Perso parent"};
+const KIDS={eloha:"Éloha",ael:"Aël",both:"Les deux"};
+const KEY="planning-famille-v2";
+let uid=1; const nid=p=>(p||'b')+(Date.now()%1e7).toString(36)+(uid++);
+const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+'h'+String(m%60).padStart(2,'0');
+const dh=m=>{const h=Math.floor(m/60),x=m%60;return h?(h+'h'+(x?String(x).padStart(2,'0'):'')):(x+'min')};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function B(day,start,dur,label,kind,owner,kids,cost,trajet){
+  return{id:nid(),day,start,dur,label,kind,owner,kids:kids||'eloha',cost:cost||0,trajet:trajet||0}}
+const D0={0:{am:'papa',pm:'maman'},1:{am:'papa',pm:'maman'},2:{am:'maman',pm:'papa'},
+          3:{am:'papa',pm:'maman'},4:{am:'maman',pm:'maman'},5:{am:'maman',pm:'papa'},6:{am:'papa',pm:'maman'}};
+const duty=()=>JSON.parse(JSON.stringify(D0));
+const eco=(d,s,du,o)=>B(d,s,du,'École maison','ecole',o,'eloha',0,0);
+const grapho=d=>B(d,9*60,60,'Grapho','ecole','grapho','eloha',140,0);
+const gaelle=d=>B(d,9*60+30,180,'Gaëlle — les deux','garde','gaelle','both',180,0);
+
+/* socle commun : activités avec trajets déclarés */
+function socle(){return[
+  eco(1,510,60,'papa'),   B(1,900,240,'Ninja','activite','maman','eloha',0,60),
+  eco(2,510,60,'maman'),  B(2,780,120,'Hip hop','activite','papa','eloha',0,45),
+  eco(3,510,60,'papa'),
+  eco(4,510,60,'maman'),  B(4,780,180,'Skate + batterie (amie)','activite','amie','both',0,0),
+  eco(5,510,30,'papa'),   B(5,780,120,'Ninja','activite','papa','eloha',0,45),
+  eco(6,510,30,'maman')]}
+
+function PRESETS(){
+  const P={};
+  /* LIGHT : lundi matin Papa prend les deux (Grapho + Aël) -> Maman solo ;
+     mardi aprèm Maman prend les deux au Ninja -> Papa solo. À inverser une semaine sur deux. */
+  const li=socle(); li.push(grapho(0));
+  const ln=li.find(b=>b.day===1&&b.label==='Ninja'); ln.owner='maman'; ln.kids='both';
+  P.light={name:'Light',blocks:li,duty:{...duty(),0:{am:'papa',pm:'papa'},1:{am:'papa',pm:'maman'}}};
+  /* MIDDLE : + Gaëlle vendredi matin */
+  const mi=socle(); mi.push(grapho(0),gaelle(4));
+  const mn=mi.find(b=>b.day===1&&b.label==='Ninja'); mn.owner='maman'; mn.kids='both';
+  P.middle={name:'Middle',blocks:mi,duty:{...duty(),0:{am:'papa',pm:'papa'},1:{am:'papa',pm:'maman'}}};
+  /* FULL : 2 Grapho + Gaëlle */
+  const fu=socle().filter(b=>!(b.day===1&&b.kind==='ecole'));
+  fu.push(grapho(0),grapho(1),gaelle(4));
+  P.full={name:'Full option',blocks:fu,duty:{...duty(),0:{am:'maman',pm:'papa'},1:{am:'papa',pm:'maman'}}};
+  /* PROPOSÉE : 2 blocs Gaëlle, 1 Grapho, dimanche off, Aël embarqué au hip hop */
+  /* PROPOSÉE : pas de Grapho, deux blocs Gaëlle (les 2 enfants) = seul levier qui libère à deux ;
+     activités prises avec les deux enfants ; dimanche sans école. */
+  const pr=socle(); pr.push(gaelle(1),gaelle(4));
+  const pn=pr.find(b=>b.day===1&&b.label==='Ninja'); pn.owner='maman'; pn.kids='both';
+  const ph=pr.find(b=>b.label==='Hip hop'); ph.kids='both';
+  const ps=pr.find(b=>b.day===5&&b.label==='Ninja'); ps.kids='both';
+  const dim=pr.findIndex(b=>b.day===6); if(dim>-1)pr.splice(dim,1);
+  P.propose={name:'Proposée',blocks:pr,duty:{...duty(),1:{am:'papa',pm:'maman'},3:{am:'maman',pm:'papa'},6:{am:'maman',pm:'papa'}}};
+  P.draft={name:'Brouillon',blocks:[],duty:duty()};
+  Object.keys(P).forEach(k=>P[k].meta={vj:false,va:false,note:''});
+  return P;
+}
+const ORDER0=['light','middle','full','propose','draft'];
+
+let S=load(),view=S.view||'day';
+function load(){
+  try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.v===2){uid=r.uid||500;return r}}catch(e){}
+  return{v:2,uid:500,active:'middle',order:ORDER0.slice(),plans:PRESETS()};
+}
+const save=()=>{S.uid=uid;localStorage.setItem(KEY,JSON.stringify(S))};
+const P=()=>S.plans[S.active];
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
+
+function engine(pl){
+  const slots=[],N=(T1-T0)/STEP,per={papa:0,maman:0},load={papa:0,maman:0};
+  let bothT=0,noneT=0;
+  for(let d=0;d<7;d++)for(let i=0;i<N;i++){
+    const t=T0+i*STEP,hd=t<MID?'am':'pm';
+    const du=(pl.duty[d]&&pl.duty[d][hd])||'papa';
+    const bs=pl.blocks.filter(b=>b.day===d&&b.start<t+STEP&&b.start+b.dur>t);
+    const busy={papa:false,maman:false},cov={eloha:null,ael:null};
+    bs.forEach(b=>{
+      if(b.owner==='papa'||b.owner==='maman')busy[b.owner]=true;
+      if(b.kind==='perso')return;
+      if(b.kids==='both'){cov.eloha=b.owner;cov.ael=b.owner}else cov[b.kids]=b.owner;
+    });
+    if(!cov.eloha||!cov.ael)busy[du]=true;
+    const fp=!busy.papa,fm=!busy.maman;
+    slots.push({d,t,hd,fp,fm});
+    if(fp)per.papa+=STEP;else load.papa+=STEP;
+    if(fm)per.maman+=STEP;else load.maman+=STEP;
+    if(fp&&fm)bothT+=STEP; if(!fp&&!fm)noneT+=STEP;
+  }
+  const runs={papa:[],maman:[]};
+  for(let d=0;d<7;d++)['am','pm'].forEach(hd=>{
+    const sl=slots.filter(s=>s.d===d&&s.hd===hd);
+    ['papa','maman'].forEach(w=>{let best=0,c=0;
+      sl.forEach(s=>{const f=w==='papa'?s.fp:s.fm;c=f?c+STEP:0;if(c>best)best=c});
+      if(best>=180)runs[w].push({d,hd,len:best})});
+  });
+  /* plus longue garde d'affilée, par parent et par jour */
+  const longest={papa:{len:0,d:0},maman:{len:0,d:0}};
+  for(let d=0;d<7;d++)['papa','maman'].forEach(w=>{
+    let c=0;slots.filter(s=>s.d===d).forEach(s=>{const f=w==='papa'?s.fp:s.fm;c=f?0:c+STEP;
+      if(c>longest[w].len)longest[w]={len:c,d}});
+  });
+  const cost=pl.blocks.reduce((a,b)=>a+(+b.cost||0),0),tot=per.papa+per.maman;
+  return{per,load,longest,bothT,noneT,cost,runs,slots,rate:tot?cost/(tot/60*4.33):0,rateBoth:bothT?cost/(bothT/60*4.33):0};
+}
+
+function chips(){
+  const e=$('chips');e.innerHTML='';
+  S.order.forEach(k=>{const p=S.plans[k];if(!p)return;const c=engine(p);
+    const b=document.createElement('button');b.className='chip';b.setAttribute('aria-selected',k===S.active);
+    b.innerHTML='<b>'+esc(p.name)+(p.meta.vj&&p.meta.va?' ✓':'')+'</b><small>'+c.cost+'€ · '+dh(c.bothT)+' à 2</small>';
+    b.onclick=()=>{S.active=k;save();render()};e.appendChild(b)});
+  const a=document.createElement('button');a.className='chip add';a.textContent='+ semaine';a.onclick=newPlan;e.appendChild(a);
+}
+function score(){
+  const c=engine(P());
+  const hd=w=>c.runs[w].map(r=>D3[r.d]+(r.hd==='am'?' matin':' aprèm')).join(', ')||'aucune';
+  $('score').innerHTML=
+   '<div class="card p"><span class="k">Papa — demi-journées libres ≥3h</span><span class="v">'+c.runs.papa.length+'</span>'+
+     '<div class="s">'+esc(hd('papa'))+'<br>garde : '+dh(c.load.papa)+' · max '+dh(c.longest.papa.len)+' d\'affilée ('+D3[c.longest.papa.d]+')</div></div>'+
+   '<div class="card m"><span class="k">Maman — demi-journées libres ≥3h</span><span class="v">'+c.runs.maman.length+'</span>'+
+     '<div class="s">'+esc(hd('maman'))+'<br>garde : '+dh(c.load.maman)+' · max '+dh(c.longest.maman.len)+' d\'affilée ('+D3[c.longest.maman.d]+')</div></div>'+
+   '<div class="card two"><span><span class="k">Libres à deux</span><span class="v '+(c.bothT?'okc':'bad')+'">'+dh(c.bothT)+'</span></span>'+
+     '<span><span class="k">Les deux pris</span><span class="v '+(c.noneT>240?'bad':'')+'">'+dh(c.noneT)+'</span></span>'+
+     '<span><span class="k">Coût</span><span class="v">'+c.cost+' €</span></span>'+
+     '<span class="pill">'+(c.cost?(c.bothT?Math.round(c.rateBoth)+' €/h à deux':'0 h à deux'):'gratuit')+'</span>'+
+     '<span class="pill">écart de garde '+dh(Math.abs(c.load.papa-c.load.maman))+'</span></div>';
+}
+function dayView(){
+  const pl=P(),c=engine(pl),w=$('days');w.innerHTML='';
+  for(let d=0;d<7;d++){
+    const el=document.createElement('div');el.className='day';
+    const fp=c.slots.filter(s=>s.d===d&&s.fp).length*STEP,fm=c.slots.filter(s=>s.d===d&&s.fm).length*STEP;
+    el.innerHTML='<h3>'+DAYS[d]+'<span class="free">P '+dh(fp)+' · M '+dh(fm)+' libres</span></h3>';
+    ['am','pm'].forEach(hd=>{
+      const h=document.createElement('div');h.className='half';
+      const du=(pl.duty[d]&&pl.duty[d][hd])||'papa';
+      h.innerHTML='<div class="hh"><span class="lbl">'+(hd==='am'?'Matin 8–13h':'Après-midi 13–20h')+'</span>'+
+        '<span class="duty" data-d="'+d+'" data-hd="'+hd+'">'+
+        '<button data-v="papa" aria-pressed="'+(du==='papa')+'">Garde : Papa</button>'+
+        '<button data-v="maman" aria-pressed="'+(du==='maman')+'">Maman</button></span></div>';
+      pl.blocks.filter(b=>b.day===d&&(b.start<MID?'am':'pm')===hd).sort((a,b)=>a.start-b.start).forEach(b=>{
+        const r=document.createElement('div');r.className='row '+b.kind;
+        const wcl=b.owner==='papa'?'papa':b.owner==='maman'?'maman':'tiers';
+        const wl=b.owner==='papa'?'P':b.owner==='maman'?'M':OWN[b.owner][0];
+        r.innerHTML='<span class="tm">'+hm(b.start)+'<br>'+hm(b.start+b.dur)+'</span>'+
+          '<span class="tx"><b><span class="who '+wcl+'">'+wl+'</span>'+esc(b.label)+'</b>'+
+          '<span>'+OWN[b.owner]+' · '+KIDS[b.kids]+' · '+dh(b.dur)+
+          (b.trajet?' dont '+dh(b.trajet)+' trajet → '+dh(b.dur-b.trajet)+' sur place':'')+
+          (b.cost?' · '+b.cost+'€/mois':'')+'</span></span><span class="go">›</span>';
+        r.onclick=()=>editBlock(b);h.appendChild(r);
+      });
+      const fpH=c.slots.filter(s=>s.d===d&&s.hd===hd&&s.fp).length*STEP;
+      const fmH=c.slots.filter(s=>s.d===d&&s.hd===hd&&s.fm).length*STEP;
+      const tg=[];if(fpH>=180)tg.push('Papa libre '+dh(fpH));if(fmH>=180)tg.push('Maman libre '+dh(fmH));
+      if(tg.length)h.insertAdjacentHTML('beforeend','<div class="free-tag"><i>✔</i> '+tg.join(' · ')+'</div>');
+      const ab=document.createElement('button');ab.className='addb';ab.textContent='+ bloc';
+      ab.onclick=()=>editBlock(B(d,hd==='am'?9*60:14*60,60,'','activite','papa','eloha',0,0),true);
+      h.appendChild(ab);el.appendChild(h);
+    });
+    w.appendChild(el);
+  }
+  w.querySelectorAll('.duty').forEach(s=>s.onclick=e=>{
+    if(e.target.tagName!=='BUTTON')return;
+    const d=+s.dataset.d,hd=s.dataset.hd;pl.duty[d]=pl.duty[d]||{};pl.duty[d][hd]=e.target.dataset.v;
+    save();render();
+  });
+}
+function weekView(){
+  const pl=P(),g=$('grid');g.innerHTML='';
+  g.appendChild(Object.assign(document.createElement('div'),{className:'dh'}));
+  for(let d=0;d<7;d++){const e=document.createElement('div');e.className='dh';const dm=pl.duty[d]||{};
+    e.innerHTML=DAYS[d]+'<small>garde '+(dm.am==='maman'?'M':'P')+' / '+(dm.pm==='maman'?'M':'P')+'</small>';g.appendChild(e)}
+  const H=document.createElement('div');H.className='hours';
+  for(let t=T0;t<T1;t+=STEP){const r=document.createElement('div');r.className='hr'+(t%60===0?' oc':'');
+    r.textContent=t%60===0?(t/60)+'h':'';H.appendChild(r)}
+  g.appendChild(H);
+  for(let d=0;d<7;d++){
+    const c=document.createElement('div');c.className='col';c.dataset.day=d;
+    for(let t=T0;t<T1;t+=STEP){const s=document.createElement('div');s.className='sl'+(t%60===0?' oc':'');c.appendChild(s)}
+    const n=document.createElement('div');n.className='nap';n.title='Sieste Aël';
+    n.style.top=(NAP[0]-T0)/STEP*ROW+'px';n.style.height=(NAP[1]-NAP[0])/STEP*ROW+'px';c.appendChild(n);
+    pl.blocks.filter(b=>b.day===d).forEach(b=>c.appendChild(blkEl(b)));
+    g.appendChild(c);
+  }
+}
+function blkEl(b){
+  const e=document.createElement('div');e.className='blk '+b.kind;e.dataset.id=b.id;
+  e.style.top=(b.start-T0)/STEP*ROW+'px';e.style.height=Math.max(b.dur/STEP*ROW-2,20)+'px';
+  const wl=b.owner==='papa'?'<span class="who papa">P</span>':b.owner==='maman'?'<span class="who maman">M</span>':'<span class="who tiers">'+OWN[b.owner][0]+'</span>';
+  e.innerHTML='<b>'+wl+esc(b.label)+'</b><span>'+hm(b.start)+'–'+hm(b.start+b.dur)+(b.kids==='both'?' · les 2':'')+'</span>';
+  drag(e,b);return e;
+}
+function alerts(){
+  const pl=P(),c=engine(pl),o=[];
+  const nap=pl.blocks.filter(b=>b.start<NAP[1]&&b.start+b.dur>NAP[0]&&(b.kids==='both'||b.kids==='ael'));
+  if(nap.length)o.push('<b>Sieste d\'Aël (12h30–14h30)</b> — '+nap.map(b=>esc(b.label)+' ('+D3[b.day]+')').join(', ')+'. Question à trancher avant de valider : il dort sur place, ou il reste avec un parent et le gain de la demi-journée disparaît.');
+  pl.blocks.filter(b=>b.kind==='activite'&&!b.trajet&&b.dur>=150&&(b.owner==='papa'||b.owner==='maman')).forEach(b=>
+    o.push('<b>'+esc(b.label)+' ('+D3[b.day]+')</b> — '+dh(b.dur)+' bloqués, trajet non renseigné. Remplis « dont trajet » dans le bloc : c\'est le seul moyen de voir si c\'est l\'activité ou la voiture qui mange la demi-journée.'));
+  const gr=pl.blocks.filter(b=>b.owner==='grapho');
+  if(gr.length>1)o.push('<b>Deux Grapho ('+gr.map(b=>D3[b.day]).join(', ')+')</b> — Grapho ne prend qu\'Éloha 1 h. Sur ces matinées un parent garde Aël <em>et</em> fait le taxi : ça libère un parent, jamais les deux. Regarde les compteurs solo, pas le prix.');
+  if(c.bothT===0&&c.cost>0)o.push('<b>'+c.cost+' €/mois pour 0 h à deux.</b> Tout le budget part en temps solo alterné. Si c\'est l\'intention, c\'est cohérent ; sinon seul un bloc qui prend <em>les deux</em> enfants change la donne.');
+  else if(c.rateBoth>30&&c.bothT)o.push('<b>'+Math.round(c.rateBoth)+' €</b> l\'heure de temps à deux. Au-delà de 25 €/h, un bloc de garde en plus vaut mieux que la même somme ailleurs.');
+  const we=pl.blocks.filter(b=>b.kind==='ecole'&&b.day>=5);
+  if(we.length>=2)o.push('<b>École 7 jours sur 7</b> — aucun jour sans apprentissage formel. Rien ne l\'impose, et c\'est ce qui craque en premier.');
+  const ec=Math.abs(c.load.papa-c.load.maman);
+  if(ec>=240)o.push('<b>Déséquilibre de garde '+dh(ec)+'</b> sur la semaine ('+dh(c.load.papa)+' Papa / '+dh(c.load.maman)+' Maman). Inverse un ou deux « parent de garde » pour remettre à plat.');
+  const wst=c.longest.papa.len>=c.longest.maman.len?'papa':'maman';
+  if(c.longest[wst].len>=600)o.push('<b>'+(wst==='papa'?'Papa':'Maman')+' : journée entière de garde '+D3[c.longest[wst].d]+'</b> ('+dh(c.longest[wst].len)+' sans coupure, les deux enfants). Sur le papier ça libère l\'autre toute la journée ; c\'est ce qui se négocie le plus mal le soir. Basculer une des deux demi-journées suffit.');
+  ['papa','maman'].forEach(w=>{if(!c.runs[w].length)o.push('<b>'+(w==='papa'?'Papa':'Maman')+' n\'a aucune demi-journée de 3 h d\'affilée.</b> Des bouts d\'heure ne permettent pas de travailler : viser au moins deux demi-journées chacun.')});
+  if(!o.length)o.push('<span class="g"><b>Rien à signaler</b> sur cette version.</span>');
+  $('alerts').innerHTML='<h3>Points de friction</h3>'+o.map(x=>'<div class="al">'+x+'</div>').join('');
+}
+function votes(){
+  const m=P().meta;
+  $('vj').setAttribute('aria-pressed',!!m.vj);$('vj').textContent=m.vj?'Jonathan ✓':'Jonathan : à valider';
+  $('va').setAttribute('aria-pressed',!!m.va);$('va').textContent=m.va?'Aurélie ✓':'Aurélie : à valider';
+  $('note').value=m.note||'';
+}
+function render(){
+  const p=P();
+  $('ttl').textContent=p.name+(p.date?' — '+new Date(p.date+'T00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'short'}):'');
+  chips();score();alerts();votes();
+  $('days').style.display=view==='day'?'block':'none';
+  $('week').style.display=view==='week'?'block':'none';
+  view==='day'?dayView():weekView();
+  $('vw').textContent=view==='day'?'▦':'☰';
+}
+
+let DR=null;
+function drag(el,b){
+  el.addEventListener('pointerdown',ev=>{
+    if(ev.button)return;try{el.setPointerCapture(ev.pointerId)}catch(e){}
+    DR={b,el,x0:ev.clientX,y0:ev.clientY,moved:false,d0:b.day,s0:b.start};ev.preventDefault();});
+}
+addEventListener('pointermove',ev=>{
+  if(!DR)return;const dx=ev.clientX-DR.x0,dy=ev.clientY-DR.y0;
+  if(!DR.moved&&Math.abs(dx)+Math.abs(dy)<6)return;
+  DR.moved=true;DR.el.classList.add('drag');
+  const over=[...document.querySelectorAll('.col')].find(c=>{const r=c.getBoundingClientRect();return ev.clientX>=r.left&&ev.clientX<=r.right});
+  const day=over?+over.dataset.day:DR.d0;
+  let st=Math.round((DR.s0+Math.round(dy/ROW)*STEP)/STEP)*STEP;
+  st=Math.max(T0,Math.min(T1-DR.b.dur,st));
+  DR.b.day=day;DR.b.start=st;DR.el.style.top=(st-T0)/STEP*ROW+'px';
+  if(over&&over!==DR.el.parentNode)over.appendChild(DR.el);
+  DR.el.querySelector('span:not(.who)').textContent=hm(st)+'–'+hm(st+DR.b.dur)+(DR.b.kids==='both'?' · les 2':'');
+});
+addEventListener('pointerup',()=>{
+  if(!DR)return;const d=DR;DR=null;d.el.classList.remove('drag');
+  if(d.moved){save();score();alerts();chips()}else editBlock(d.b);
+});
+
+function openSheet(h){$('pn').innerHTML=h;$('sheet').classList.add('on')}
+function closeSheet(){$('sheet').classList.remove('on')}
+function segHtml(id,map,val){return '<div class="seg" id="'+id+'">'+Object.keys(map).map(k=>
+  '<button data-v="'+k+'" aria-pressed="'+(k===val)+'">'+map[k]+'</button>').join('')+'</div>'}
+
+function editBlock(b,isNew){
+  const opts=[];for(let t=T0;t<=T1-30;t+=STEP)opts.push('<option value="'+t+'"'+(t===b.start?' selected':'')+'>'+hm(t)+'</option>');
+  openSheet('<div class="grab"></div>'+
+   '<div class="f"><label>Intitulé</label><input type="text" id="f_l" value="'+esc(b.label)+'" placeholder="Ninja, école maison, Gaëlle…"></div>'+
+   '<div class="f"><label>Type</label>'+segHtml('f_k',KIND,b.kind)+'</div>'+
+   '<div class="f"><label>Qui s\'en occupe</label>'+segHtml('f_o',OWN,b.owner)+'</div>'+
+   '<div class="f"><label>Quel enfant</label>'+segHtml('f_c',KIDS,b.kids)+'</div>'+
+   '<div class="f"><label>Jour</label>'+segHtml('f_d',Object.fromEntries(D3.map((n,i)=>[i,n])),String(b.day))+'</div>'+
+   '<div class="two"><div class="f"><label>Début</label><select id="f_s">'+opts.join('')+'</select></div>'+
+   '<div class="f"><label>Durée (trajets compris)</label><div class="stepper">'+
+     '<button id="f_dm">−</button><span id="f_dv">'+dh(b.dur)+'</span><button id="f_dp">+</button></div></div></div>'+
+   '<div class="two"><div class="f"><label>Dont trajet A/R</label><div class="stepper">'+
+     '<button id="f_tm">−</button><span id="f_tv">'+dh(b.trajet||0)+'</span><button id="f_tp">+</button></div></div>'+
+   '<div class="f"><label>Coût €/mois</label><input type="number" id="f_p" min="0" step="10" value="'+(b.cost||0)+'"></div></div>'+
+   '<div class="acts">'+(isNew?'':'<button class="btn dang" id="f_del">Supprimer</button>')+
+     '<button class="btn dark" id="f_ok">'+(isNew?'Ajouter':'Enregistrer')+'</button></div>');
+  const st={...b};
+  const seg=(id,k)=>$(id).onclick=e=>{if(e.target.tagName!=='BUTTON')return;
+    [...$(id).children].forEach(x=>x.setAttribute('aria-pressed',x===e.target));
+    st[k]=e.target.dataset.v;
+    if(k==='owner'){if(TIERS.includes(st.owner)&&!+$('f_p').value)$('f_p').value=st.owner==='gaelle'?180:st.owner==='grapho'?140:0;
+      if(st.owner==='papa'||st.owner==='maman')$('f_p').value=0}};
+  seg('f_k','kind');seg('f_o','owner');seg('f_c','kids');seg('f_d','day');
+  const bump=(k,el,s,mn,mx)=>{st[k]=Math.max(mn,Math.min(mx,(+st[k]||0)+s));$(el).textContent=dh(st[k])};
+  $('f_dm').onclick=()=>bump('dur','f_dv',-15,15,T1-T0);
+  $('f_dp').onclick=()=>bump('dur','f_dv',15,15,T1-T0);
+  $('f_tm').onclick=()=>bump('trajet','f_tv',-15,0,600);
+  $('f_tp').onclick=()=>bump('trajet','f_tv',15,0,600);
+  if(!isNew)$('f_del').onclick=()=>{P().blocks=P().blocks.filter(x=>x.id!==b.id);save();closeSheet();render();toast('Bloc supprimé')};
+  $('f_ok').onclick=()=>{
+    Object.assign(b,st,{label:$('f_l').value.trim()||'Sans titre',day:+st.day,start:+$('f_s').value,cost:+$('f_p').value||0});
+    b.dur=Math.min(b.dur,T1-b.start);b.trajet=Math.min(b.trajet||0,b.dur);
+    if(isNew)P().blocks.push(b);
+    save();closeSheet();render();
+  };
+}
+function menu(){
+  openSheet('<div class="grab"></div><div class="menu">'+
+   '<button id="m_ren">Renommer / dater<small>'+esc(P().name)+'</small></button>'+
+   '<button id="m_dup">Dupliquer<small>tester une variante sans casser celle-ci</small></button>'+
+   '<button id="m_new">Nouvelle semaine à venir<small>copie datée de la version courante</small></button>'+
+   '<button id="m_imp">Importer un code reçu</button>'+
+   '<button id="m_prt">Imprimer / PDF</button>'+
+   '<button id="m_del">Supprimer cette version</button>'+
+   '<button id="m_rst">Tout réinitialiser</button></div>');
+  $('m_ren').onclick=renamePlan;
+  $('m_dup').onclick=()=>{const k=nid('p'),c=JSON.parse(JSON.stringify(P()));
+    c.name=P().name+' bis';c.blocks.forEach(b=>b.id=nid());c.meta={vj:false,va:false,note:''};
+    S.plans[k]=c;S.order.push(k);S.active=k;save();closeSheet();render()};
+  $('m_new').onclick=()=>{closeSheet();newPlan()};
+  $('m_imp').onclick=importSheet;
+  $('m_prt').onclick=()=>{closeSheet();setTimeout(()=>print(),250)};
+  $('m_del').onclick=()=>{if(S.order.length<2)return toast('Il faut au moins une version');
+    if(confirm('Supprimer « '+P().name+' » ?')){delete S.plans[S.active];S.order=S.order.filter(x=>x!==S.active);
+      S.active=S.order[0];save();closeSheet();render()}};
+  $('m_rst').onclick=()=>{if(confirm('Tout remettre à zéro ? Les versions personnalisées seront perdues.')){
+    localStorage.removeItem(KEY);S=load();save();closeSheet();render()}};
+}
+function renamePlan(){
+  const p=P();
+  openSheet('<div class="grab"></div><div class="f"><label>Nom</label><input type="text" id="r_n" value="'+esc(p.name)+'"></div>'+
+   '<div class="f"><label>Semaine du (optionnel)</label><input type="date" id="r_d" value="'+(p.date||'')+'"></div>'+
+   '<div class="acts"><button class="btn dark" id="r_ok">Enregistrer</button></div>');
+  $('r_ok').onclick=()=>{p.name=$('r_n').value.trim()||p.name;p.date=$('r_d').value||'';save();closeSheet();render()};
+}
+function newPlan(){
+  const k=nid('p'),c=JSON.parse(JSON.stringify(P()));const d=new Date();
+  d.setDate(d.getDate()+(8-(d.getDay()||7)));
+  c.blocks.forEach(b=>b.id=nid());c.date=d.toISOString().slice(0,10);
+  c.name='Semaine du '+d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'});
+  c.meta={vj:false,va:false,note:''};
+  S.plans[k]=c;S.order.push(k);S.active=k;save();render();renamePlan();
+}
+const pack=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const unpack=s=>JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/')))));
+function shareSheet(){
+  const p=P(),code=pack({t:'plan',p}),url=location.origin+location.pathname+'#p='+code;
+  const local=location.protocol==='file:';
+  openSheet('<div class="grab"></div><h3 style="margin-bottom:8px">Envoyer « '+esc(p.name)+' »</h3>'+
+   (local?'<p class="small">Page ouverte en local : envoie plutôt le <b>code</b> ci-dessous, à coller dans « Importer ».</p>'
+         :'<p class="small">Elle ouvre le lien, voit exactement cette version, la modifie et te la renvoie.</p>')+
+   '<div class="f"><label>'+(local?'Code':'Lien')+'</label><textarea id="s_t" readonly style="min-height:70px">'+esc(local?code:url)+'</textarea></div>'+
+   '<div class="acts"><button class="btn" id="s_c">Copier</button><button class="btn dark" id="s_s">Partager…</button></div>'+
+   '<div class="acts"><button class="btn" id="s_i">Importer un code reçu</button></div>');
+  $('s_c').onclick=()=>{const t=$('s_t');t.select();document.execCommand('copy');toast('Copié')};
+  $('s_s').onclick=async()=>{try{await navigator.share({title:'Semaine type — '+p.name,text:local?code:'Notre semaine : '+p.name,url:local?undefined:url})}
+    catch(e){const t=$('s_t');t.select();document.execCommand('copy');toast('Copié')}};
+  $('s_i').onclick=importSheet;
+}
+function importSheet(){
+  openSheet('<div class="grab"></div><h3 style="margin-bottom:8px">Importer</h3>'+
+   '<p class="small">Colle le lien ou le code reçu.</p>'+
+   '<div class="f"><textarea id="i_t" style="min-height:80px" placeholder="https://…#p=…  ou le code brut"></textarea></div>'+
+   '<div class="acts"><button class="btn dark" id="i_ok">Importer</button></div>');
+  $('i_ok').onclick=()=>{let v=$('i_t').value.trim();const m=v.match(/#p=([^\s&]+)/);if(m)v=m[1];
+    try{const o=unpack(v),p=o&&o.t==='plan'?o.p:o;if(!p||!p.blocks)throw 0;
+      adopt(p);closeSheet();render();toast('Version importée')}catch(e){alert('Code illisible.')}};
+}
+function adopt(p){
+  const k=nid('p');p.blocks.forEach(b=>b.id=nid());
+  if(S.order.some(x=>S.plans[x]&&S.plans[x].name===p.name))p.name+=' (reçue)';
+  p.meta=p.meta||{vj:false,va:false,note:''};
+  S.plans[k]=p;S.order.push(k);S.active=k;save();
+}
+$('vw').onclick=()=>{view=view==='day'?'week':'day';S.view=view;save();render()};
+$('sh').onclick=shareSheet;
+$('mn').onclick=menu;
+$('vj').onclick=()=>{P().meta.vj=!P().meta.vj;save();votes();chips()};
+$('va').onclick=()=>{P().meta.va=!P().meta.va;save();votes();chips()};
+$('note').oninput=e=>{P().meta.note=e.target.value;save()};
+$('sheet').querySelector('.bd').onclick=closeSheet;
+
+(function(){const m=location.hash.match(/^#p=(.+)$/);if(!m)return;
+  try{const o=unpack(m[1]),p=o&&o.t==='plan'?o.p:o;
+    if(p&&p.blocks&&confirm('Importer la version « '+p.name+' » reçue ?'))adopt(p)}catch(e){}
+  history.replaceState(null,'',location.pathname)})();
+
+render();
+
+</script>
+</body>
+</html>
